@@ -18,12 +18,10 @@ Bot.onText(/\/start/, (msg) => {
 Bot.on("callback_query", (query) => {
     const choose = query.data;
     const chatId = query.message.chat.id;
+    const Engines = ["Google", "Microsoft", "Farazin"];
 
-    if (choose == "google") {
-        client.set(`user:${chatId}:action`, choose);
-        Bot.deleteMessage(chatId, query.message.message_id);
-        Bot.sendMessage(chatId, "Choose destination language:", Component.GM_SelectLang_InlineKeyboard);
-    }
-
+    if (Engines.includes(choose)) Action.SendDestLanguage_IKeyboard(Bot, query.message, client, choose);
 });
+
+
 
