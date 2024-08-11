@@ -18,11 +18,12 @@ const Google_SelectLang_InlineKeyboard = {
             [
                 { text: "Persian", callback_data: "fa" },
                 { text: "English", callback_data: "en" },
-                { text: "Spanish", callback_data: "sp" }
+                { text: "Spanish", callback_data: "es" }
             ],
             [
                 { text: "French", callback_data: "fr" },
-                { text: "Germany", callback_data: "gr" }
+                { text: "Germany", callback_data: "de" },
+                { text: "Arabic", callback_data: "ar" }
             ]
         ]
     }
