@@ -2,8 +2,10 @@ const Telegram_Bot = require("node-telegram-bot-api");
 const Action = require("./Dependencies/Actions");
 const Axios = require("axios");
 const { default: axios } = require("axios");
+require("dotenv").config();
 
-
+const Token = process.env.TELEGRAM_TOKEN;
+const Api_Token = process.env.API_TOKEN;
 
 const Bot = new Telegram_Bot(Token, { polling: true });
 
@@ -16,7 +18,7 @@ Bot.on("callback_query", (query) => {
     const choose = query.data;
     const Engines = ["google", "microsoft", "faraazin"];
     const Langs = ["fa", "en", "fr", "de", "ar", "es", "en_fa", "fa_en"];
-    console.log("--------------------" + choose);
+
     if (Engines.includes(choose)) Action.SendDestLanguage_IKeyboard(Bot, query.message, choose);
     else if (Langs.includes(choose)) Action.SetTranslationLang(Bot, choose, query.message);
 });
