@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.3",
     "node-telegram-bot-api": "^0.66.0",
     "redis": "^4.7.0"
   }

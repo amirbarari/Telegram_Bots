@@ -2,17 +2,17 @@ const homeInlineKeyboard = {
     reply_markup: {
         inline_keyboard: [
             [
-                { text: "Google", callback_data: "Google" },
-                { text: "Microsoft", callback_data: "Microsoft" }
+                { text: "Google", callback_data: "google" },
+                { text: "Microsoft", callback_data: "microsoft" }
             ],
             [
-                { text: "Farazin", callback_data: "Farazin" }
+                { text: "Faraazin", callback_data: "faraazin" }
             ]
         ]
     }
 };
 
-const Google_SelectLang_InlineKeyboard = {
+const google_SelectLang_InlineKeyboard = {
     reply_markup: {
         inline_keyboard: [
             [
@@ -29,23 +29,23 @@ const Google_SelectLang_InlineKeyboard = {
     }
 };
 
-const Microsoft_SelectLang_InlineKeyboard = {
+const microsoft_SelectLang_InlineKeyboard = {
     reply_markup: {
         inline_keyboard: [
             [
                 { text: "Persian", callback_data: "fa" },
                 { text: "English", callback_data: "en" },
-                { text: "Spanish", callback_data: "sp" }
+                { text: "Spanish", callback_data: "es" }
             ],
             [
                 { text: "French", callback_data: "fr" },
-                { text: "Germany", callback_data: "gr" }
+                { text: "Germany", callback_data: "de" }
             ]
         ]
     }
 }
 
-const Farazin_SelectLang_InlineKeyboard = {
+const faraazin_SelectLang_InlineKeyboard = {
     reply_markup: {
         inline_keyboard: [
             [
@@ -57,6 +57,6 @@ const Farazin_SelectLang_InlineKeyboard = {
 }
 
 module.exports = {
-    homeInlineKeyboard, Google_SelectLang_InlineKeyboard,
-    Microsoft_SelectLang_InlineKeyboard, Farazin_SelectLang_InlineKeyboard
+    homeInlineKeyboard, google_SelectLang_InlineKeyboard,
+    microsoft_SelectLang_InlineKeyboard, faraazin_SelectLang_InlineKeyboard
 };
