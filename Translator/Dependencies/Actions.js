@@ -1,5 +1,6 @@
 const components = require("./Components");
 const redis = require("redis")
+const axios = require("axios");
 
 const client = redis.createClient();
 client.connect();
@@ -24,4 +25,25 @@ const SetTranslationLang = (Bot, lang, message) => {
     Bot.sendMessage(chatID, "Please send your text for translation :");
 };
 
-module.exports = { SendHomeMenu, SendDestLanguage_IKeyboard, SetTranslationLang, client };
+const SendTranslation = async (Bot, msg, Api_Token) => {
+    const chatID = msg.chat.id;
+    let Text = msg.text;
+    try {
+        const action = await client.get(`user:${chatID}:action`);
+        const lang = await client.get(`user:${chatID}:lang`);
+
+        if (action && lang) {
+            Text = encodeURIComponent(Text);
+            const response = await axios.get(`https://one-api.ir/translate/?token=${Api_Token}&action=${action}&lang=${lang}&q=${Text}`);
+            let translated_text = "";
+            translated_text = (action === "faraazin") ? response.data.result.base[0][1] : response.data.result;
+            Bot.sendMessage(chatID, translated_text);
+        }
+        else SendHomeMenu(Bot, chatID, "choose your translation engine.");
+    } catch (error) {
+        console.error("Error in translation", error);
+        Bot.sendMessage(msg.chat.id, "Sorry, something went wrong. Please try again later.");
+    }
+};
+
+module.exports = { SendHomeMenu, SendDestLanguage_IKeyboard, SetTranslationLang, SendTranslation };
